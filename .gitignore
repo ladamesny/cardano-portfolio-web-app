@@ -1,4 +1,22 @@
+# Rust
 /backend/target/
-/backend/Cargo.lock
+
+# Node/Next.js
 /frontend/node_modules/
 /frontend/.next/
+/frontend/.env*.local
+/frontend/out/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
