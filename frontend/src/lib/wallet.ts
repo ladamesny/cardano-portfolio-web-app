@@ -66,6 +66,30 @@ export async function connectWallet(walletName: WalletName): Promise<string> {
 
   try {
     const walletApi = await wallet.enable();
+
+    // Network check: compare wallet network with expected network from env
+    const expectedNetworkRaw = process.env.NEXT_PUBLIC_CARDANO_NETWORK || 'preview';
+    const expectedNetworkEnv = expectedNetworkRaw.toLowerCase().trim();
+    // Simplified check: mainnet vs testnet (hardcoded to preview)
+    const isMainnet = expectedNetworkEnv === 'mainnet';
+    const expectedNetworkId = isMainnet ? 1 : 0; // mainnet=1, testnet=0
+
+    if (typeof walletApi.getNetworkId === 'function') {
+      try {
+        const networkId: number = await walletApi.getNetworkId();
+        if (networkId !== expectedNetworkId) {
+          const actualLabel = networkId === 1 ? 'mainnet' : 'preview testnet';
+          const expectedLabel = isMainnet ? 'mainnet' : 'preview testnet';
+          throw new Error(`Wallet network mismatch. Your wallet is on "${actualLabel}". Please switch your wallet to "${expectedLabel}" and try again.`);
+        }
+      } catch (netErr) {
+        // If network check fails unexpectedly, surface a helpful message
+        if (netErr instanceof Error) {
+          throw netErr;
+        }
+        throw new Error('Failed to verify wallet network. Please check your wallet settings.');
+      }
+    }
     
     // Helper to normalize address (handle arrays, hex, bech32, etc.)
     const normalizeAddress = async (addr: any): Promise<string> => {
