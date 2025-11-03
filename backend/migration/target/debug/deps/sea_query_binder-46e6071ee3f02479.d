@@ -1,0 +1,10 @@
+/Volumes/T7Shield/Users/larry/Projects/personal/cardano-portfolio-web-app/backend/migration/target/debug/deps/sea_query_binder-46e6071ee3f02479.d: /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/lib.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx_postgres.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/values.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx.rs
+
+/Volumes/T7Shield/Users/larry/Projects/personal/cardano-portfolio-web-app/backend/migration/target/debug/deps/libsea_query_binder-46e6071ee3f02479.rlib: /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/lib.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx_postgres.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/values.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx.rs
+
+/Volumes/T7Shield/Users/larry/Projects/personal/cardano-portfolio-web-app/backend/migration/target/debug/deps/libsea_query_binder-46e6071ee3f02479.rmeta: /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/lib.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx_postgres.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/values.rs /Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx.rs
+
+/Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/lib.rs:
+/Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx_postgres.rs:
+/Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/values.rs:
+/Users/larry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sea-query-binder-0.7.0/src/sqlx.rs:
