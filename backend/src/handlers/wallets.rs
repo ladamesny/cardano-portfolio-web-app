@@ -1,5 +1,5 @@
 use axum::{extract::State, Json, http::StatusCode};
-use sea_orm::{ActiveModelTrait, Set, EntityTrait};
+use sea_orm::{ActiveModelTrait, Set, EntityTrait, QueryFilter, ColumnTrait};
 use serde::{Deserialize, Serialize};
 use crate::entities::{wallet, prelude::*};
 use crate::AppState;
@@ -57,6 +57,35 @@ pub async fn get_wallet_data(
         .ok_or(StatusCode::NOT_FOUND)?;
 
     eprintln!("STAKE KEY FOR CARDANO SERVICE: {}", &wallet.stake_key);
+
+    let account_info = state.cardano_service
+        .get_account_info(&wallet.stake_key)
+        .await
+        .map_err(|e| {
+            eprintln!("Blockfrost error: {:?}", e);
+            StatusCode::BAD_GATEWAY
+        })?;
+
+    Ok(Json(WalletDataResponse {
+        id: wallet.id,
+        stake_key: wallet.stake_key,
+        wallet_type: Some(wallet.wallet_type),
+        active: account_info.active,
+        balance: account_info.controlled_amount,
+        rewards: account_info.rewards_sum,
+    }))
+}
+
+pub async fn get_wallet_by_stake_key(
+    State(state): State<AppState>,
+    axum::extract::Path(stake_key): axum::extract::Path<String>,
+) -> Result<Json<WalletDataResponse>, StatusCode> {
+    let wallet = Wallet::find()
+        .filter(wallet::Column::StakeKey.eq(&stake_key))
+        .one(&state.db)
+        .await
+        .map_err(|_| StatusCode::NOT_FOUND)?
+        .ok_or(StatusCode::NOT_FOUND)?;
 
     let account_info = state.cardano_service
         .get_account_info(&wallet.stake_key)
