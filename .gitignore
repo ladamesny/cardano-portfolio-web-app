@@ -1,5 +1,11 @@
 # Rust
+# Ignore all Rust build output directories anywhere in the repo
+**/target/
+
+# Explicit common locations (redundant with **/target/ but kept for clarity)
+/target/
 /backend/target/
+/backend/migration/target/
 
 # Node/Next.js
 /frontend/node_modules/
